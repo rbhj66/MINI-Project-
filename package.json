@@ -1,59 +1,16 @@
 {
-  "name": "securewipe",
+  "name": "securewipe-gui",
   "version": "1.0.0",
-  "description": "Cross-platform secure data wiping application for IT asset recycling",
-  "main": "dist/index.js",
+  "description": "SecureWipe Web GUI",
   "scripts": {
-    "build": "tsc && npm run build:platforms",
-    "build:platforms": "npm run build:windows && npm run build:linux && npm run build:android",
-    "build:windows": "tsc platforms/windows/index.ts --outDir dist/windows",
-    "build:linux": "tsc platforms/linux/index.ts --outDir dist/linux",
-    "build:android": "tsc platforms/android/index.ts --outDir dist/android",
-    "dev": "ts-node src/index.ts",
-    "start": "node dist/index.js",
-    "wipe": "node dist/cli/wipe.js",
-    "verify": "node dist/cli/verify.js",
-    "create-iso": "node dist/tools/iso-creator.js",
-    "test": "jest",
-    "lint": "eslint src/**/*.ts",
-    "format": "prettier --write src/**/*.ts"
-  },
-  "keywords": [
-    "data-wiping",
-    "security",
-    "e-waste",
-    "recycling",
-    "nist",
-    "sanitization"
-  ],
-  "author": "SecureWipe Team",
-  "license": "MIT",
-  "dependencies": {
-    "crypto": "^1.0.1",
-    "commander": "^11.0.0",
-    "inquirer": "^9.2.0",
-    "chalk": "^5.3.0",
-    "ora": "^7.0.0",
-    "pdf-lib": "^1.17.1",
-    "node-forge": "^1.3.1",
-    "bcrypt": "^5.1.0",
-    "uuid": "^9.0.0"
+    "build-css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build-css-prod": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "serve": "python3 -m http.server 8080",
+    "build": "npm run build-css-prod"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/bcrypt": "^5.0.0",
-    "@types/uuid": "^9.0.0",
-    "@types/node-forge": "^1.3.0",
-    "typescript": "^5.0.0",
-    "ts-node": "^10.9.0",
-    "jest": "^29.0.0",
-    "@types/jest": "^29.0.0",
-    "eslint": "^8.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "prettier": "^3.0.0"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0"
   }
 }
