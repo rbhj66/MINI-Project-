@@ -1,182 +1,299 @@
-# SecureWipe GUI - Production Setup
+# AI-Powered Air Purification System
 
-## Overview
+A comprehensive web-based system for monitoring air quality and controlling an intelligent robot car for air purification using advanced AI algorithms.
 
-This is the production-ready web GUI for SecureWipe with local Tailwind CSS and icon dependencies, eliminating CDN dependencies for production use.
+## Features
 
-## Setup Instructions
+### Core Functionality
+- **Real-time AQI Monitoring** - Track Air Quality Index with MQ135 sensor
+- **Temperature & Humidity Tracking** - DHT22 sensor integration
+- **GPS Location Tracking** - Real-time robot positioning
+- **Smart Robot Control** - Autonomous navigation and manual control
+- **Intelligent Spray System** - Automated purification mist deployment
+- **AI Decision Making** - Predictive analytics and smart automation
+
+### Dashboard Interfaces
+- **Admin Dashboard** - Advanced control panel with analytics
+- **User Dashboard** - Clean monitoring interface for general users
+
+## Technology Stack
+
+### Frontend
+- HTML5 with semantic markup
+- Tailwind CSS for modern styling
+- Vanilla JavaScript for interactivity
+- Chart.js for data visualization
+- Font Awesome for icons
+- Responsive design (Mobile + Desktop)
+
+### Backend
+- PHP (Core PHP, no heavy framework)
+- RESTful API architecture
+- MySQL database
+- XAMPP development environment
+
+### Hardware Integration (Simulated)
+- MQ135 Air Quality Sensor
+- DHT22 Temperature & Humidity Sensor
+- GPS Module for location tracking
+- Smart Robot Car mechanics
+
+## Installation Guide
 
 ### Prerequisites
+- XAMPP (or similar PHP/MySQL environment)
+- Modern web browser
+- Internet connection (for CDN resources)
 
-- Node.js 18+ 
-- npm or yarn
-- Python 3 (for local server)
+### Step 1: Database Setup
+1. Start XAMPP and ensure Apache and MySQL are running
+2. Open phpMyAdmin (http://localhost/phpmyadmin)
+3. Create a new database named `air_purification_system`
+4. Import the `db.sql` file:
+   - Click on the database
+   - Click "Import" tab
+   - Choose the `db.sql` file from the project
+   - Click "Go"
 
-### Installation
+### Step 2: Project Setup
+1. Copy the entire project folder to your XAMPP htdocs directory
+   - Windows: `C:/xampp/htdocs/air/`
+   - Mac/Linux: `/opt/lampp/htdocs/air/`
 
-1. **Install Dependencies**
-```bash
-cd src/ui/gui
-npm install
+2. Ensure the file structure is correct:
+   ```
+   /air/
+   |-- admin/
+   |   |-- index.html
+   |-- user/
+   |   |-- index.html
+   |-- api/
+   |   |-- config.php
+   |   |-- get_data.php
+   |   |-- save_data.php
+   |   |-- robot_control.php
+   |   |-- get_history.php
+   |   |-- ai_simulation.php
+   |   |-- simulate_data.php
+   |-- assets/
+   |   |-- js/
+   |   |   |-- admin.js
+   |   |   |-- user.js
+   |   |-- css/
+   |   |-- images/
+   |-- index.html
+   |-- db.sql
+   |-- README.md
+   ```
+
+### Step 3: Database Configuration
+The system uses default XAMPP credentials:
+- Host: localhost
+- Username: root
+- Password: (empty)
+- Database: air_purification_system
+
+If you use different credentials, update `api/config.php`:
+```php
+$host = 'localhost';
+$username = 'your_username';
+$password = 'your_password';
+$database = 'air_purification_system';
 ```
 
-2. **Build Production CSS**
-```bash
-npm run build
+### Step 4: Access the System
+1. Open your web browser
+2. Navigate to: `http://localhost/air/`
+3. Choose your dashboard:
+   - **Main Landing Page**: `http://localhost/air/`
+   - **Admin Dashboard**: `http://localhost/air/admin/`
+   - **User Dashboard**: `http://localhost/air/user/`
+
+## Usage Guide
+
+### Admin Dashboard
+The admin panel provides full system control:
+
+1. **Overview** - Real-time sensor data and system status
+2. **Live Map** - GPS tracking and robot positioning
+3. **Robot Control** - Manual and automated control options
+4. **Analytics** - Historical data and trend analysis
+5. **Alerts** - System notifications and warnings
+6. **System Logs** - Activity monitoring
+
+### User Dashboard
+Clean, simple interface for monitoring:
+
+1. **AQI Display** - Large, color-coded air quality indicator
+2. **Health Recommendations** - Personalized advice based on current conditions
+3. **Trend Analysis** - 24-hour air quality patterns
+4. **Environmental Statistics** - Temperature, humidity, and system status
+
+### Robot Control Features
+
+#### Manual Control
+- Directional movement (forward, backward, left, right)
+- Spray system activation/deactivation
+- Power control
+
+#### Automated Mode
+- AI-driven navigation to high AQI areas
+- Automatic spray activation based on thresholds
+- Energy management and return-to-base functionality
+
+#### AI Simulation
+- Predictive analytics for air quality trends
+- Intelligent decision making
+- Energy optimization
+- Alert generation
+
+## API Endpoints
+
+### Data Management
+- `GET /api/get_data.php` - Fetch latest sensor data and system status
+- `POST /api/save_data.php` - Save new sensor readings
+- `GET /api/get_history.php?period=24h` - Get historical data
+
+### Robot Control
+- `POST /api/robot_control.php` - Control robot actions
+  - Actions: `start_robot`, `stop_robot`, `toggle_spray`, `set_mode`, `set_threshold`, `move_robot`, `manual_control`
+
+### AI Features
+- `POST /api/ai_simulation.php` - Trigger AI decision making
+- `POST /api/simulate_data.php` - Generate test data
+
+## Data Simulation
+
+The system includes a data simulation feature for testing:
+
+```javascript
+// Generate sample data
+fetch('/api/simulate_data.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        count: 10,           // Number of readings to generate
+        interval: 5,         // Minutes between readings
+        base_aqi: 75,        // Base AQI value
+        variation: 25        // AQI variation range
+    })
+})
 ```
 
-This will:
-- Compile Tailwind CSS from `src/input.css` to `dist/output.css`
-- Minify the CSS for production
-- Generate optimized styles
+## Database Schema
 
-3. **Start Development Server**
-```bash
-npm run serve
-```
+### Tables
+1. **sensor_data** - Stores sensor readings
+2. **robot_status** - Current robot state and settings
+3. **alerts** - System notifications
+4. **system_logs** - Activity tracking
 
-Then open `http://localhost:8080/index-prod.html`
-
-### Development Mode
-
-For development with live CSS reloading:
-```bash
-npm run build-css
-```
-
-This will watch for changes and rebuild CSS automatically.
-
-## File Structure
-
-```
-src/ui/gui/
-|-- package.json              # Node.js dependencies
-|-- tailwind.config.js        # Tailwind configuration
-|-- src/
-|   |-- input.css            # Tailwind input file
-|-- dist/
-|   |-- output.css           # Generated production CSS
-|-- index-prod.html         # Production HTML (no CDN deps)
-|-- index.html              # Development HTML (with CDN)
-```
-
-## Production Features
-
-### Removed CDN Dependencies
-- **Tailwind CSS**: Now compiled locally from `src/input.css`
-- **Lucide Icons**: Replaced with CSS-based icon placeholders
-- **External Fonts**: Uses system fonts for better performance
-
-### Fallback CSS
-The production HTML includes comprehensive fallback CSS styles in case Tailwind CSS fails to load, ensuring the interface remains functional.
-
-### Optimized Performance
-- Minified CSS production build
-- No external network dependencies
-- Self-contained deployment package
-
-## Deployment
-
-### Option 1: Static File Server
-Copy the entire `src/ui/gui` directory to your web server and serve `index-prod.html`.
-
-### Option 2: Docker Deployment
-```dockerfile
-FROM nginx:alpine
-COPY src/ui/gui /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-```
-
-### Option 3: Integration with Bootable Media
-The production files can be included in the bootable ISO for offline operation.
+### Key Fields
+- AQI values with timestamp
+- GPS coordinates
+- Temperature and humidity
+- Robot operational status
+- Alert levels and messages
 
 ## Customization
 
-### Adding New Icons
-Replace the CSS icon placeholders in the `<style>` section:
-```css
-.icon-new-icon::before { content: "Icon"; }
-```
+### AQI Thresholds
+Update AQI thresholds in the admin panel or directly in the database:
+- Good: 0-50
+- Moderate: 51-100
+- Unhealthy for Sensitive: 101-150
+- Unhealthy: 151-200
+- Very Unhealthy: 201-300
+- Hazardous: 301+
 
-### Modifying Colors
-Update `tailwind.config.js` to add custom colors:
-```javascript
-theme: {
-  extend: {
-    colors: {
-      'custom-color': '#your-color'
-    }
-  }
-}
-```
+### Location Settings
+Modify GPS coordinates in the simulation to match your location:
+- Base coordinates in `api/simulate_data.php`
+- Robot home position in database
 
-### Adding Components
-Add new component classes to `src/input.css`:
-```css
-@layer components {
-  .new-component {
-    @apply bg-blue-500 text-white p-4 rounded;
-  }
-}
-```
-
-## Browser Compatibility
-
-- Chrome 88+
-- Firefox 85+
-- Safari 14+
-- Edge 88+
-
-## Security Considerations
-
-- No external CDN dependencies
-- All resources served locally
-- Content Security Policy ready
-- HTTPS recommended for production
+### Styling
+The system uses Tailwind CSS. Customize colors and styles by:
+1. Modifying Tailwind classes in HTML files
+2. Adding custom CSS in `<style>` sections
+3. Updating color schemes for AQI indicators
 
 ## Troubleshooting
 
-### CSS Not Loading
-1. Ensure `dist/output.css` exists
-2. Run `npm run build` to regenerate CSS
-3. Check file permissions
+### Common Issues
 
-### Icons Not Displaying
-1. Icons use CSS text placeholders
-2. Customize icon styles in the `<style>` section
-3. Consider replacing with SVG icons for better visual quality
+1. **Database Connection Error**
+   - Ensure XAMPP MySQL is running
+   - Check database credentials in `api/config.php`
+   - Verify database exists and tables are created
 
-### Build Errors
-1. Clear node_modules: `rm -rf node_modules`
-2. Reinstall: `npm install`
-3. Check Node.js version compatibility
+2. **404 Errors**
+   - Check file permissions
+   - Ensure .htaccess allows directory access
+   - Verify Apache mod_rewrite is enabled
 
-## Integration with Backend
+3. **Charts Not Loading**
+   - Check internet connection for Chart.js CDN
+   - Verify API endpoints are responding
+   - Check browser console for JavaScript errors
 
-The GUI can be integrated with the SecureWipe backend via:
+4. **Real-time Updates Not Working**
+   - Check API endpoint responses
+   - Verify JavaScript console for errors
+   - Ensure CORS headers are properly set
 
-1. **REST API**: Replace mock functions with actual API calls
-2. **WebSocket**: Real-time progress updates
-3. **File Upload**: Certificate generation and download
-
-Example API integration:
-```javascript
-async function startWipe() {
-  try {
-    const response = await fetch('/api/wipe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        device: selectedDevice.path,
-        method: selectedMethod
-      })
-    });
-    
-    const result = await response.json();
-    // Handle response
-  } catch (error) {
-    console.error('Wipe failed:', error);
-  }
-}
+### Debug Mode
+Add error reporting to PHP files for debugging:
+```php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 ```
+
+## Security Considerations
+
+- Change default database credentials in production
+- Implement authentication for admin dashboard
+- Add input validation and sanitization
+- Use HTTPS in production environment
+- Regular database backups
+
+## Performance Optimization
+
+- Implement database indexing for large datasets
+- Add caching for frequently accessed data
+- Optimize API response times
+- Use CDN for static resources
+
+## Future Enhancements
+
+- Mobile app development
+- Machine learning model improvements
+- Additional sensor integrations
+- Multi-robot coordination
+- Cloud deployment options
+- Advanced reporting features
+
+## Support
+
+For issues and questions:
+1. Check the troubleshooting section
+2. Review browser console errors
+3. Verify database connectivity
+4. Test API endpoints individually
+
+## License
+
+This project is for educational and demonstration purposes. Feel free to modify and enhance according to your needs.
+
+---
+
+**System Requirements:**
+- PHP 7.4+
+- MySQL 5.7+
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Internet connection for CDN resources
+
+**Recommended Setup:**
+- XAMPP for local development
+- 2GB+ RAM
+- 1GB+ disk space
+- Stable internet connection

@@ -1,459 +1,746 @@
-<!DOCTYPE html>
+x<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecureWipe - Trustworthy IT Asset Data Sanitization</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>AI Air Purification System - Smart Environmental Monitoring</title>
+    <link rel="stylesheet" href="assets/css/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @keyframes pulse-border {
-            0%, 100% { border-color: rgb(239 68 68); }
-            50% { border-color: rgb(248 113 113); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
         }
-        .danger-zone {
-            animation: pulse-border 2s ease-in-out infinite;
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        .progress-fill {
-            transition: width 0.3s ease-in-out;
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tech-badge {
+            transition: all 0.2s ease;
+        }
+        
+        .tech-badge:hover {
+            transform: scale(1.1);
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .dashboard-preview {
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .dashboard-preview:hover {
+            border-color: #667eea;
+            transform: scale(1.02);
         }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <i data-lucide="shield" class="w-8 h-8 text-blue-600 mr-3"></i>
-                    <div>
-                        <h1 class="text-xl font-bold text-gray-900">SecureWipe</h1>
-                        <p class="text-sm text-gray-500">Trustworthy IT Asset Data Sanitization</p>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 hero-gradient rounded-lg flex items-center justify-center">
+                        <i class="fas fa-wind text-white text-lg"></i>
                     </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">AirPurify AI</h1>
+                        <p class="text-xs text-gray-600">Smart Environmental Monitoring</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#features" class="text-gray-700 hover:text-purple-600 transition-colors">Features</a>
+                    <a href="#technology" class="text-gray-700 hover:text-purple-600 transition-colors">Technology</a>
+                    <a href="#dashboards" class="text-gray-700 hover:text-purple-600 transition-colors">Dashboards</a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 transition-colors">About</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <span class="text-sm text-gray-600">NIST SP 800-88 Compliant</span>
-                    <span class="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded">v1.0.0</span>
+                    <a href="admin/index.html" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-cog mr-2"></i>Admin
+                    </a>
+                    <a href="user/index.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-eye mr-2"></i>Monitor
+                    </a>
                 </div>
             </div>
         </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- One-Click Wipe Section -->
-        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <div class="flex items-center mb-6">
-                <i data-lucide="zap" class="w-6 h-6 text-yellow-500 mr-2"></i>
-                <h2 class="text-2xl font-bold text-gray-900">One-Click Secure Wipe</h2>
-            </div>
-
-            <!-- Device Selection -->
-            <div class="mb-6">
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                    Select Storage Device
-                </label>
-                <div id="device-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Devices will be populated here -->
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center space-x-2 bg-white bg-opacity-20 rounded-full px-4 py-2 mb-6">
+                    <div class="w-2 h-2 bg-green-400 rounded-full pulse-animation"></div>
+                    <span class="text-sm">System Active & Monitoring</span>
                 </div>
-                <button onclick="scanDevices()" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-                    <i data-lucide="refresh-cw" class="w-4 h-4 inline mr-2"></i>
-                    Scan Devices
-                </button>
-            </div>
-
-            <!-- Method Selection -->
-            <div class="mb-6">
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                    Wiping Method
-                </label>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="method-card border rounded-lg p-4 cursor-pointer hover:border-blue-500 transition" onclick="selectMethod('nist-purge')">
-                        <div class="flex items-center mb-2">
-                            <i data-lucide="shield-check" class="w-5 h-5 text-green-600 mr-2"></i>
-                            <h3 class="font-semibold">NIST Purge</h3>
-                        </div>
-                        <p class="text-sm text-gray-600">Complete sanitization including hidden areas (HPA/DCO)</p>
-                        <span class="inline-block mt-2 px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Recommended</span>
-                    </div>
-                    
-                    <div class="method-card border rounded-lg p-4 cursor-pointer hover:border-blue-500 transition" onclick="selectMethod('ieee-purge')">
-                        <div class="flex items-center mb-2">
-                            <i data-lucide="lock" class="w-5 h-5 text-blue-600 mr-2"></i>
-                            <h3 class="font-semibold">IEEE Purge</h3>
-                        </div>
-                        <p class="text-sm text-gray-600">Cryptographic erase for SSDs and self-encrypting drives</p>
-                        <span class="inline-block mt-2 px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">For SSDs</span>
-                    </div>
-                    
-                    <div class="method-card border rounded-lg p-4 cursor-pointer hover:border-blue-500 transition" onclick="selectMethod('nist-clear')">
-                        <div class="flex items-center mb-2">
-                            <i data-lucide="shield" class="w-5 h-5 text-yellow-600 mr-2"></i>
-                            <h3 class="font-semibold">NIST Clear</h3>
-                        </div>
-                        <p class="text-sm text-gray-600">User-addressable areas only (faster but less secure)</p>
-                        <span class="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded">Quick</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Action Button -->
-            <div class="border-t pt-6">
-                <button id="wipe-button" onclick="startWipe()" disabled class="w-full md:w-auto px-8 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition">
-                    <i data-lucide="alert-triangle" class="w-5 h-5 inline mr-2"></i>
-                    Start Secure Wipe
-                </button>
-                <p class="mt-2 text-sm text-red-600 font-medium">
-                    <strong>WARNING:</strong> This action will permanently erase all data and cannot be undone.
+                <h1 class="text-5xl lg:text-6xl font-bold mb-6">
+                    AI-Powered Air<br>Purification System
+                </h1>
+                <p class="text-xl mb-12 text-gray-200 max-w-3xl mx-auto">
+                    Advanced environmental monitoring with intelligent robot car technology. 
+                    Real-time AQI tracking, automated purification, and smart analytics for healthier air.
                 </p>
             </div>
-        </div>
-
-        <!-- Progress Section (Hidden by default) -->
-        <div id="progress-section" class="bg-white rounded-lg shadow-md p-6 mb-8 hidden">
-            <h3 class="text-lg font-semibold mb-4">Wiping Progress</h3>
-            <div class="space-y-4">
-                <div>
-                    <div class="flex justify-between text-sm mb-1">
-                        <span>Overall Progress</span>
-                        <span id="progress-percentage">0%</span>
+            
+            <!-- Portal Selection -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Admin Portal -->
+                <div class="glass-effect rounded-xl p-8 text-center hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-cog text-white text-3xl"></i>
                     </div>
-                    <div class="w-full bg-gray-200 rounded-full h-3">
-                        <div id="progress-bar" class="progress-fill bg-blue-600 h-3 rounded-full" style="width: 0%"></div>
+                    <h2 class="text-2xl font-bold mb-4">Admin Portal</h2>
+                    <p class="text-gray-300 mb-6">
+                        Complete system control with robot management, AI simulation, and advanced analytics
+                    </p>
+                    <ul class="text-left text-gray-300 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Robot Control</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> AI Simulation</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> System Analytics</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Alert Management</li>
+                    </ul>
+                    <a href="admin.html" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors inline-block">
+                        <i class="fas fa-shield-alt mr-2"></i>Enter Admin Portal
+                    </a>
+                </div>
+                
+                <!-- User Portal -->
+                <div class="glass-effect rounded-xl p-8 text-center hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-eye text-white text-3xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-4">User Portal</h2>
+                    <p class="text-gray-300 mb-6">
+                        Monitor air quality, get health recommendations, and track environmental conditions
+                    </p>
+                    <ul class="text-left text-gray-300 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Real-time AQI</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Health Tips</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Trend Analysis</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-2"></i> Mobile Friendly</li>
+                    </ul>
+                    <a href="user.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors inline-block">
+                        <i class="fas fa-chart-line mr-2"></i>View Air Quality
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Quick Access -->
+            <div class="mt-16 text-center">
+                <p class="text-gray-300 mb-4">Quick Access for Testing:</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="admin/index.html" class="text-gray-300 hover:text-white underline text-sm">
+                        Admin Dashboard Direct
+                    </a>
+                    <a href="user/index.html" class="text-gray-300 hover:text-white underline text-sm">
+                        User Dashboard Direct
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Visual Element -->
+        <div class="relative mt-16">
+            <div class="floating-animation">
+                <div class="relative">
+                    <div class="w-64 h-64 mx-auto relative">
+                        <div class="absolute inset-0 bg-white bg-opacity-20 rounded-full backdrop-filter backdrop-blur-lg"></div>
+                        <div class="absolute inset-4 bg-white bg-opacity-30 rounded-full backdrop-filter backdrop-blur-lg"></div>
+                        <div class="absolute inset-8 bg-white bg-opacity-40 rounded-full backdrop-filter backdrop-blur-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-robot text-4xl mb-2"></i>
+                                <p class="text-sm font-semibold">Smart Robot</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Floating elements -->
+                            <div class="absolute top-0 left-0 w-12 h-12 bg-green-400 rounded-full opacity-60 pulse-animation"></div>
+                            <div class="absolute top-10 right-10 w-8 h-8 bg-yellow-400 rounded-full opacity-60 pulse-animation" style="animation-delay: 0.5s;"></div>
+                            <div class="absolute bottom-0 left-20 w-10 h-10 bg-blue-400 rounded-full opacity-60 pulse-animation" style="animation-delay: 1s;"></div>
+                            <div class="absolute bottom-10 right-0 w-6 h-6 bg-red-400 rounded-full opacity-60 pulse-animation" style="animation-delay: 1.5s;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+    
+    <!-- Live Sensor Data Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 gradient-text">Live Environmental Monitoring</h2>
+                <p class="text-lg text-gray-600">Real-time sensor data from our Arduino-based monitoring system</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <!-- Temperature Card -->
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-temperature-high text-red-600 text-xl"></i>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full pulse-animation"></div>
+                            <span class="text-sm text-gray-600">Live</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Temperature</h3>
+                    <div class="text-3xl font-bold text-red-600 mb-1">
+                        <span id="live-temp">--</span>°C
+                    </div>
+                    <p class="text-sm text-gray-600">Current ambient temperature</p>
+                </div>
+                
+                <!-- Humidity Card -->
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-tint text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full pulse-animation"></div>
+                            <span class="text-sm text-gray-600">Live</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Humidity</h3>
+                    <div class="text-3xl font-bold text-blue-600 mb-1">
+                        <span id="live-humidity">--</span>%
+                    </div>
+                    <p class="text-sm text-gray-600">Current relative humidity</p>
+                </div>
+                
+                <!-- MQ Gas Card -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-smog text-green-600 text-xl"></i>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full pulse-animation"></div>
+                            <span class="text-sm text-gray-600">Live</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Air Quality (MQ)</h3>
+                    <div class="text-3xl font-bold text-green-600 mb-1">
+                        <span id="live-mq">--</span>
+                    </div>
+                    <p class="text-sm text-gray-600">MQ135 sensor reading</p>
+                </div>
+            </div>
+            
+            <!-- Additional Info -->
+            <div class="mt-12 text-center">
+                <div class="inline-flex items-center space-x-4 bg-gray-100 rounded-full px-6 py-3">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-green-500 rounded-full pulse-animation"></div>
+                        <span class="text-sm font-medium text-gray-700">System Active</span>
+                    </div>
+                    <div class="text-gray-400">|</div>
+                    <span class="text-sm text-gray-600">Last updated: <span id="sensor-last-updated">--:--:--</span></span>
+                    </div>
+                    <div class="text-gray-400">|</div>
+                    <span class="text-sm text-gray-600">Data source: Arduino ESP8266</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 gradient-text">Advanced Features</h2>
+                <p class="text-xl text-gray-600">Cutting-edge technology for intelligent air quality management</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Real-Time AQI Monitoring</h3>
+                    <p class="text-gray-600">Continuous air quality tracking with MQ135 sensor technology. Color-coded AQI indicators with instant alerts.</p>
+                </div>
+                
+                <div class="feature-card bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Smart Robot Car</h3>
+                    <p class="text-gray-600">Autonomous navigation to polluted areas. GPS-enabled positioning with intelligent path planning.</p>
+                </div>
+                
+                <div class="feature-card bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">AI Decision Making</h3>
+                    <p class="text-gray-600">Machine learning algorithms for optimal purification strategies. Predictive analytics for air quality trends.</p>
+                </div>
+                
+                <div class="feature-card bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-spray-can text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Intelligent Spray System</h3>
+                    <p class="text-gray-600">Automated purification mist deployment. Targeted treatment based on pollution hotspots.</p>
+                </div>
+                
+                <div class="feature-card bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-temperature-high text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Environmental Sensors</h3>
+                    <p class="text-gray-600">DHT22 temperature & humidity monitoring. Multi-parameter environmental data collection.</p>
+                </div>
+                
+                <div class="feature-card bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-map-marked-alt text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">GPS Tracking</h3>
+                    <p class="text-gray-600">Real-time location monitoring. Geographic mapping of pollution distribution patterns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Technology Stack -->
+    <section id="technology" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 gradient-text">Technology Stack</h2>
+                <p class="text-xl text-gray-600">Built with modern, robust technologies for optimal performance</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Frontend Technologies</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="tech-badge bg-white rounded-lg p-4 text-center shadow">
+                            <i class="fab fa-html5 text-orange-500 text-3xl mb-2"></i>
+                            <p class="font-semibold">HTML5</p>
+                            <p class="text-sm text-gray-600">Semantic Markup</p>
+                        </div>
+                        <div class="tech-badge bg-white rounded-lg p-4 text-center shadow">
+                            <i class="fab fa-css3-alt text-blue-500 text-3xl mb-2"></i>
+                            <p class="font-semibold">Tailwind CSS</p>
+                            <p class="text-sm text-gray-600">Modern Styling</p>
+                        </div>
+                        <div class="tech-badge bg-white rounded-lg p-4 text-center shadow">
+                            <i class="fab fa-js text-yellow-500 text-3xl mb-2"></i>
+                            <p class="font-semibold">JavaScript</p>
+                            <p class="text-sm text-gray-600">Interactive Logic</p>
+                        </div>
+                        <div class="tech-badge bg-white rounded-lg p-4 text-center shadow">
+                            <i class="fas fa-chart-line text-purple-500 text-3xl mb-2"></i>
+                            <p class="font-semibold">Chart.js</p>
+                            <p class="text-sm text-gray-600">Data Visualization</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                    <div>
-                        <span class="text-gray-600">Current Pass:</span>
-                        <span id="current-pass" class="font-medium ml-1">1/1</span>
-                    </div>
-                    <div>
-                        <span class="text-gray-600">Sectors Processed:</span>
-                        <span id="sectors-processed" class="font-medium ml-1">0</span>
-                    </div>
-                    <div>
-                        <span class="text-gray-600">Time Remaining:</span>
-                        <span id="time-remaining" class="font-medium ml-1">Calculating...</span>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Backend Technologies</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="tech-badge bg-white rounded-lg p-4 text-center shadow">
+                            <i class="fab fa-php text-purple-600 text-3xl mb-2"></i>
+                            <p class="font-semibold">PHP</p>
+                            <p class="text-sm text-gray-600">Server Logic</p>
+                        </div>
+                        <div class="tech-badge bg-white rounded-lg p-4 text-center shadow">
+                            <i class="fas fa-database text-blue-600 text-3xl mb-2"></i>
+                            <p class="font-semibold">MySQL</p>
+                            <p class="text-sm text-gray-600">Data Storage</p>
+                        </div>
+                        <div class="tech-badge bg-white rounded-lg p-4 text-center shadow">
+                            <i class="fas fa-cloud text-green-600 text-3xl mb-2"></i>
+                            <p class="font-semibold">REST API</p>
+                            <p class="text-sm text-gray-600">Service Architecture</p>
+                        </div>
+                        <div class="tech-badge bg-white rounded-lg p-4 text-center shadow">
+                            <i class="fas fa-server text-gray-600 text-3xl mb-2"></i>
+                            <p class="font-semibold">XAMPP</p>
+                            <p class="text-sm text-gray-600">Development Stack</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Results Section (Hidden by default) -->
-        <div id="results-section" class="bg-white rounded-lg shadow-md p-6 mb-8 hidden">
-            <div class="flex items-center mb-4">
-                <i data-lucide="check-circle" class="w-6 h-6 text-green-600 mr-2"></i>
-                <h3 class="text-lg font-semibold">Wipe Completed Successfully</h3>
+    </section>
+    
+    <!-- Dashboards Preview -->
+    <section id="dashboards" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 gradient-text">Professional Dashboards</h2>
+                <p class="text-xl text-gray-600">Two specialized interfaces for different user needs</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <h4 class="font-medium mb-3">Wipe Details</h4>
-                    <dl class="space-y-2 text-sm">
-                        <div class="flex justify-between">
-                            <dt class="text-gray-600">Device:</dt>
-                            <dd id="result-device" class="font-medium">-</dd>
-                        </div>
-                        <div class="flex justify-between">
-                            <dt class="text-gray-600">Method:</dt>
-                            <dd id="result-method" class="font-medium">-</dd>
-                        </div>
-                        <div class="flex justify-between">
-                            <dt class="text-gray-600">Duration:</dt>
-                            <dd id="result-duration" class="font-medium">-</dd>
-                        </div>
-                        <div class="flex justify-between">
-                            <dt class="text-gray-600">Sectors Erased:</dt>
-                            <dd id="result-sectors" class="font-medium">-</dd>
-                        </div>
-                    </dl>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="dashboard-preview bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-purple-600 to-purple-800 p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2">Admin Dashboard</h3>
+                        <p>Advanced control & analytics</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Complete robot control system</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Real-time sensor monitoring</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Advanced analytics & charts</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>System logs & alerts management</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>AI simulation interface</span>
+                            </li>
+                        </ul>
+                        <a href="admin/index.html" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-semibold transition-colors text-center block">
+                            <i class="fas fa-cog mr-2"></i>Access Admin Dashboard
+                        </a>
+                    </div>
                 </div>
                 
-                <div>
-                    <h4 class="font-medium mb-3">Certificates</h4>
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
-                            <div class="flex items-center">
-                                <i data-lucide="file-text" class="w-4 h-4 text-blue-600 mr-2"></i>
-                                <span class="text-sm">PDF Certificate</span>
-                            </div>
-                            <button onclick="downloadCertificate('pdf')" class="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700">
-                                Download
-                            </button>
+                <div class="dashboard-preview bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2">User Dashboard</h3>
+                        <p>Simple monitoring interface</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Clean AQI visualization</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Health recommendations</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>24-hour trend analysis</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Environmental statistics</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Mobile-responsive design</span>
+                            </li>
+                        </ul>
+                        <a href="user/index.html" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors text-center block">
+                            <i class="fas fa-eye mr-2"></i>View Live Monitor
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- System Architecture -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 gradient-text">System Architecture</h2>
+                <p class="text-xl text-gray-600">Integrated components working seamlessly together</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-xl p-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-microchip text-blue-600 text-3xl"></i>
                         </div>
-                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
-                            <div class="flex items-center">
-                                <i data-lucide="file-code" class="w-4 h-4 text-green-600 mr-2"></i>
-                                <span class="text-sm">JSON Certificate</span>
+                        <h3 class="font-bold mb-2">Hardware Layer</h3>
+                        <p class="text-gray-600 text-sm">MQ135 sensor, DHT22, GPS module, Robot car mechanics</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-brain text-green-600 text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Processing Layer</h3>
+                        <p class="text-gray-600 text-sm">AI algorithms, Decision logic, Data analysis, Predictive modeling</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-desktop text-purple-600 text-3xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Presentation Layer</h3>
+                        <p class="text-gray-600 text-sm">Admin dashboard, User interface, Real-time visualization, Mobile access</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-6 gradient-text">About AirPurify AI</h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    AirPurify AI represents the future of environmental monitoring and air quality management. 
+                    By combining advanced sensor technology with artificial intelligence and robotics, we provide 
+                    a comprehensive solution for real-time air quality monitoring and automated purification.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div>
+                        <div class="text-4xl font-bold text-purple-600 mb-2">24/7</div>
+                        <p class="text-gray-600">Continuous Monitoring</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-blue-600 mb-2">AI</div>
+                        <p class="text-gray-600">Intelligent Decision Making</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-green-600 mb-2">Real-time</div>
+                        <p class="text-gray-600">Instant Response System</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-8">
+                    <h3 class="text-2xl font-bold mb-4">Key Benefits</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-shield-alt text-green-500 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Health Protection</p>
+                                <p class="text-gray-600 text-sm">Proactive air quality management for better health</p>
                             </div>
-                            <button onclick="downloadCertificate('json')" class="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700">
-                                Download
-                            </button>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-chart-line text-blue-500 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Data Analytics</p>
+                                <p class="text-gray-600 text-sm">Comprehensive insights and trend analysis</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-robot text-purple-500 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Automation</p>
+                                <p class="text-gray-600 text-sm">Hands-free operation with smart robotics</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-mobile-alt text-orange-500 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Accessibility</p>
+                                <p class="text-gray-600 text-sm">Monitor from anywhere, anytime</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="mt-6 p-4 bg-blue-50 rounded-lg">
-                <p class="text-sm text-blue-800">
-                    <strong>Verification:</strong> Scan the QR code in the PDF certificate or visit the verification link to confirm authenticity.
-                </p>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="hero-gradient py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">Ready to Experience Clean Air?</h2>
+            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+                Start monitoring and improving your air quality today with our intelligent system.
+            </p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+                <a href="admin/index.html" class="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-colors">
+                    <i class="fas fa-rocket mr-2"></i>Get Started
+                </a>
+                <a href="user/index.html" class="glass-effect hover:bg-white hover:bg-opacity-20 px-8 py-4 rounded-lg font-semibold transition-colors text-white">
+                    <i class="fas fa-play mr-2"></i>Live Demo
+                </a>
             </div>
         </div>
-
-        <!-- Features Section -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center mb-4">
-                    <i data-lucide="shield-check" class="w-8 h-8 text-green-600 mr-3"></i>
-                    <h3 class="text-lg font-semibold">NIST Compliant</h3>
-                </div>
-                <p class="text-gray-600">Follows NIST SP 800-88 Rev 2 and IEEE 2883-2022 standards for complete data sanitization.</p>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center mb-4">
-                    <i data-lucide="file-certificate" class="w-8 h-8 text-blue-600 mr-3"></i>
-                    <h3 class="text-lg font-semibold">Tamper-Proof</h3>
-                </div>
-                <p class="text-gray-600">Digitally signed certificates with QR codes for third-party verification and audit trails.</p>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center mb-4">
-                    <i data-lucide="hard-drive" class="w-8 h-8 text-purple-600 mr-3"></i>
-                    <h3 class="text-lg font-semibold">Complete Erasure</h3>
-                </div>
-                <p class="text-gray-600">Erases HPA, DCO, and hidden areas that standard tools miss for true data sanitization.</p>
-            </div>
-        </div>
-    </main>
-
+    </section>
+    
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="text-center">
-                <p class="text-sm">© 2024 SecureWipe India. Promoting safe e-waste management and circular economy.</p>
-                <p class="text-xs text-gray-400 mt-2">Supporting India's mission to reduce 50,000 crore worth of hoarded IT assets.</p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-wind text-white"></i>
+                        </div>
+                        <span class="font-bold text-lg">AirPurify AI</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Intelligent air quality monitoring and purification system for healthier environments.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="admin/index.html" class="hover:text-white transition-colors">Admin Dashboard</a></li>
+                        <li><a href="user/index.html" class="hover:text-white transition-colors">User Monitor</a></li>
+                        <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#technology" class="hover:text-white transition-colors">Technology</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">System Status</h4>
+                    <div class="flex items-center space-x-2 mb-2">
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span class="text-gray-400">All Systems Operational</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Last updated: <span id="footer-time">--:--:--</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 AirPurify AI. All rights reserved. | Powered by Advanced AI Technology</p>
             </div>
         </div>
     </footer>
-
+    
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // Global state
-        let selectedDevice = null;
-        let selectedMethod = 'nist-purge';
-        let wipeInProgress = false;
-
-        // Mock device data
-        const mockDevices = [
-            {
-                id: 'device1',
-                path: '/dev/sda',
-                model: 'Samsung SSD 860 EVO',
-                size: 500000000000,
-                type: 'SSD',
-                serial: 'S3Z8NB0K123456'
-            },
-            {
-                id: 'device2',
-                path: '/dev/sdb',
-                model: 'WD Blue 1TB',
-                size: 1000000000000,
-                type: 'HDD',
-                serial: 'WX1D1234567890'
-            }
-        ];
-
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', function() {
-            scanDevices();
-            selectMethod('nist-purge');
-        });
-
-        function scanDevices() {
-            const deviceList = document.getElementById('device-list');
-            deviceList.innerHTML = '<div class="col-span-2 text-center py-4"><i data-lucide="loader" class="w-6 h-6 animate-spin inline mr-2"></i>Scanning devices...</div>';
-            
-            // Simulate device scanning
-            setTimeout(() => {
-                deviceList.innerHTML = '';
-                mockDevices.forEach(device => {
-                    const deviceCard = createDeviceCard(device);
-                    deviceList.appendChild(deviceCard);
-                });
-                lucide.createIcons();
-            }, 1500);
+        // Update footer time
+        function updateFooterTime() {
+            const now = new Date();
+            document.getElementById('footer-time').textContent = now.toLocaleTimeString();
         }
-
-        function createDeviceCard(device) {
-            const div = document.createElement('div');
-            div.className = 'border rounded-lg p-4 cursor-pointer hover:border-blue-500 transition';
-            div.onclick = () => selectDevice(device);
-            
-            div.innerHTML = `
-                <div class="flex items-center justify-between mb-2">
-                    <div class="flex items-center">
-                        <i data-lucide="hard-drive" class="w-5 h-5 text-gray-600 mr-2"></i>
-                        <span class="font-medium">${device.model}</span>
-                    </div>
-                    <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">${device.type}</span>
-                </div>
-                <div class="text-sm text-gray-600">
-                    <div>Path: ${device.path}</div>
-                    <div>Size: ${formatBytes(device.size)}</div>
-                    <div>Serial: ${device.serial}</div>
-                </div>
-            `;
-            
-            return div;
-        }
-
-        function selectDevice(device) {
-            selectedDevice = device;
-            
-            // Update UI
-            document.querySelectorAll('#device-list > div').forEach(card => {
-                card.classList.remove('border-blue-500', 'bg-blue-50');
-            });
-            event.currentTarget.classList.add('border-blue-500', 'bg-blue-50');
-            
-            checkReadyToWipe();
-        }
-
-        function selectMethod(method) {
-            selectedMethod = method;
-            
-            // Update UI
-            document.querySelectorAll('.method-card').forEach(card => {
-                card.classList.remove('border-blue-500', 'bg-blue-50');
-            });
-            event.currentTarget.classList.add('border-blue-500', 'bg-blue-50');
-            
-            checkReadyToWipe();
-        }
-
-        function checkReadyToWipe() {
-            const wipeButton = document.getElementById('wipe-button');
-            wipeButton.disabled = !selectedDevice || wipeInProgress;
-        }
-
-        async function startWipe() {
-            if (!selectedDevice || wipeInProgress) return;
-            
-            wipeInProgress = true;
-            checkReadyToWipe();
-            
-            // Show progress section
-            document.getElementById('progress-section').classList.remove('hidden');
-            document.getElementById('results-section').classList.add('hidden');
-            
-            // Simulate wipe process
-            await simulateWipe();
-        }
-
-        async function simulateWipe() {
-            const duration = 5000; // 5 seconds for demo
-            const startTime = Date.now();
-            const endTime = startTime + duration;
-            
-            const updateProgress = () => {
-                const now = Date.now();
-                const elapsed = now - startTime;
-                const progress = Math.min((elapsed / duration) * 100, 100);
+        
+        // Fetch live sensor data
+        async function fetchSensorData() {
+            try {
+                const timestamp = new Date().getTime();
+                const response = await fetch(`http://192.168.137.1:8000/api/data.php?t=${timestamp}`);
                 
-                // Update progress bar
-                document.getElementById('progress-bar').style.width = progress + '%';
-                document.getElementById('progress-percentage').textContent = Math.floor(progress) + '%';
-                document.getElementById('current-pass').textContent = '1/1';
-                document.getElementById('sectors-processed').textContent = Math.floor(progress * 1000000).toLocaleString();
-                
-                const remaining = Math.max(0, duration - elapsed);
-                document.getElementById('time-remaining').textContent = formatDuration(remaining);
-                
-                if (progress < 100) {
-                    requestAnimationFrame(updateProgress);
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    if (data.status === 'ok' && data.received) {
+                        // Update sensor values
+                        const temp = parseFloat(data.received.temperature) || 0;
+                        const humidity = parseFloat(data.received.humidity) || 0;
+                        const mq = parseInt(data.received.mq) || 0;
+                        
+                        document.getElementById('live-temp').textContent = temp.toFixed(1);
+                        document.getElementById('live-humidity').textContent = humidity.toFixed(1);
+                        document.getElementById('live-mq').textContent = mq;
+                        
+                        // Update last updated time
+                        const now = new Date();
+                        document.getElementById('sensor-last-updated').textContent = now.toLocaleTimeString();
+                        
+                        console.log('Sensor data updated:', { temp, humidity, mq });
+                    }
                 } else {
-                    completeWipe();
+                    console.log('Sensor API not responding');
                 }
-            };
-            
-            updateProgress();
-        }
-
-        function completeWipe() {
-            wipeInProgress = false;
-            checkReadyToWipe();
-            
-            // Hide progress, show results
-            document.getElementById('progress-section').classList.add('hidden');
-            document.getElementById('results-section').classList.remove('hidden');
-            
-            // Update results
-            document.getElementById('result-device').textContent = selectedDevice.path;
-            document.getElementById('result-method').textContent = selectedMethod.toUpperCase();
-            document.getElementById('result-duration').textContent = '5 seconds';
-            document.getElementById('result-sectors').textContent = '1,000,000';
-            
-            // Scroll to results
-            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function downloadCertificate(format) {
-            // Simulate certificate download
-            const filename = `certificate_${selectedDevice.model.replace(/[^a-zA-Z0-9]/g, '_')}_${new Date().toISOString().split('T')[0]}.${format}`;
-            
-            // Create a mock certificate
-            const certificate = {
-                deviceId: selectedDevice.path,
-                deviceModel: selectedDevice.model,
-                wipeMethod: selectedMethod,
-                wipeDate: new Date().toISOString(),
-                verificationStatus: 'PASSED'
-            };
-            
-            const content = format === 'json' 
-                ? JSON.stringify(certificate, null, 2)
-                : 'PDF certificate content would be here';
-            
-            const blob = new Blob([content], { type: format === 'json' ? 'application/json' : 'application/pdf' });
-            const url = URL.createObjectURL(blob);
-            
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            a.click();
-            
-            URL.revokeObjectURL(url);
-        }
-
-        function formatBytes(bytes) {
-            const units = ['B', 'KB', 'MB', 'GB', 'TB'];
-            let size = bytes;
-            let unitIndex = 0;
-            
-            while (size >= 1024 && unitIndex < units.length - 1) {
-                size /= 1024;
-                unitIndex++;
+            } catch (error) {
+                console.log('Error fetching sensor data:', error);
             }
-            
-            return size.toFixed(2) + ' ' + units[unitIndex];
         }
-
-        function formatDuration(milliseconds) {
-            const seconds = Math.floor(milliseconds / 1000);
-            const minutes = Math.floor(seconds / 60);
-            
-            if (minutes > 0) {
-                return `${minutes}m ${seconds % 60}s`;
+        
+        // Initialize
+        updateFooterTime();
+        setInterval(updateFooterTime, 1000);
+        
+        // Fetch sensor data every 3 seconds
+        fetchSensorData();
+        setInterval(fetchSensorData, 3000);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
             } else {
-                return `${seconds}s`;
+                nav.classList.remove('shadow-lg');
             }
-        }
+        });
     </script>
 </body>
 </html>

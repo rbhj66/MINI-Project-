@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Portal - AI Air Purification System</title>
+    <link rel="stylesheet" href="../assets/css/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            min-height: 100vh;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .user-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .aqi-preview {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #00e400, #00c400);
+            color: white;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body class="text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full glass-effect z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 user-gradient rounded-lg flex items-center justify-center">
+                        <i class="fas fa-eye text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold">User Portal</h1>
+                        <p class="text-xs text-gray-300">Air Quality Monitor</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="admin.html" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fas fa-cog mr-2"></i>Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div
+                        class="inline-flex items-center space-x-2 bg-green-500 bg-opacity-20 rounded-full px-4 py-2 mb-6">
+                        <div class="w-2 h-2 bg-green-400 rounded-full pulse-animation"></div>
+                        <span class="text-sm">Live Air Quality Monitoring</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6">
+                        Clean Air<br>Matters
+                    </h1>
+                    <p class="text-xl mb-8 text-gray-300">
+                        Monitor real-time air quality in your area. Get health recommendations
+                        and track environmental conditions with our intelligent monitoring system.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="user/index.html"
+                            class="user-gradient text-white px-8 py-4 rounded-lg font-semibold transition-all hover:shadow-xl text-center">
+                            <i class="fas fa-chart-line mr-2"></i>View Air Quality
+                        </a>
+                        <button onclick="showFeatures()"
+                            class="glass-effect hover:bg-white hover:bg-opacity-20 px-8 py-4 rounded-lg font-semibold transition-colors text-center">
+                            <i class="fas fa-info-circle mr-2"></i>Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="float-animation">
+                        <div class="w-80 h-80 mx-auto relative">
+                            <div class="absolute inset-0 glass-effect rounded-full"></div>
+                            <div class="absolute inset-8 glass-effect rounded-full flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="aqi-preview mx-auto mb-3">
+                                        52
+                                    </div>
+                                    <p class="text-lg font-semibold">Good Air Quality</p>
+                                </div>
+                            </div>
+                            <!-- Floating elements -->
+                            <div
+                                class="absolute top-5 left-5 w-12 h-12 bg-blue-400 rounded-full opacity-60 pulse-animation">
+                            </div>
+                            <div class="absolute top-15 right-10 w-8 h-8 bg-cyan-400 rounded-full opacity-60 pulse-animation"
+                                style="animation-delay: 0.5s;"></div>
+                            <div class="absolute bottom-10 left-15 w-10 h-10 bg-teal-400 rounded-full opacity-60 pulse-animation"
+                                style="animation-delay: 1s;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 hidden">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">User Features</h2>
+                <p class="text-xl text-gray-300">Everything you need to monitor air quality</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card glass-effect rounded-xl p-6">
+                    <div class="w-16 h-16 bg-blue-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-wind text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Real-Time AQI</h3>
+                    <p class="text-gray-300">Live air quality index monitoring with color-coded indicators for easy
+                        understanding.</p>
+                </div>
+
+                <div class="feature-card glass-effect rounded-xl p-6">
+                    <div class="w-16 h-16 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-heart text-green-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Health Tips</h3>
+                    <p class="text-gray-300">Personalized health recommendations based on current air quality
+                        conditions.</p>
+                </div>
+
+                <div class="feature-card glass-effect rounded-xl p-6">
+                    <div class="w-16 h-16 bg-purple-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-area text-purple-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Trend Analysis</h3>
+                    <p class="text-gray-300">24-hour air quality trends to help you plan your outdoor activities.</p>
+                </div>
+
+                <div class="feature-card glass-effect rounded-xl p-6">
+                    <div class="w-16 h-16 bg-orange-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-temperature-high text-orange-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Temperature</h3>
+                    <p class="text-gray-300">Current temperature monitoring with "feels like" calculations.</p>
+                </div>
+
+                <div class="feature-card glass-effect rounded-xl p-6">
+                    <div class="w-16 h-16 bg-cyan-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-tint text-cyan-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Humidity</h3>
+                    <p class="text-gray-300">Real-time humidity levels with comfort indicators and recommendations.</p>
+                </div>
+
+                <div class="feature-card glass-effect rounded-xl p-6">
+                    <div class="w-16 h-16 bg-indigo-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-indigo-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mobile Friendly</h3>
+                    <p class="text-gray-300">Responsive design that works perfectly on all your devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AQI Guide -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Understanding AQI</h2>
+                <p class="text-lg text-gray-300">Know what the numbers mean for your health</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-500 rounded-full mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-2xl font-bold">0-50</span>
+                    </div>
+                    <p class="font-semibold">Good</p>
+                    <p class="text-sm text-gray-300">Air quality is satisfactory</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-yellow-500 rounded-full mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-2xl font-bold">51-100</span>
+                    </div>
+                    <p class="font-semibold">Moderate</p>
+                    <p class="text-sm text-gray-300">Acceptable for most people</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-orange-500 rounded-full mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-2xl font-bold">101-150</span>
+                    </div>
+                    <p class="font-semibold">Unhealthy for Sensitive</p>
+                    <p class="text-sm text-gray-300">Sensitive groups may experience effects</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-red-500 rounded-full mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-2xl font-bold">151-200</span>
+                    </div>
+                    <p class="font-semibold">Unhealthy</p>
+                    <p class="text-sm text-gray-300">Everyone may experience effects</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-500 rounded-full mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-2xl font-bold">201-300</span>
+                    </div>
+                    <p class="font-semibold">Very Unhealthy</p>
+                    <p class="text-sm text-gray-300">Health warning conditions</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-red-900 rounded-full mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-2xl font-bold">301+</span>
+                    </div>
+                    <p class="font-semibold">Hazardous</p>
+                    <p class="text-sm text-gray-300">Emergency conditions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="glass-effect rounded-xl p-8">
+                <h2 class="text-2xl font-bold mb-6">Today's Overview</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-green-400 mb-2">Good</div>
+                        <p class="font-semibold">Current AQI</p>
+                        <p class="text-sm text-gray-300">Safe for outdoor activities</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-blue-400 mb-2">24°C</div>
+                        <p class="font-semibold">Temperature</p>
+                        <p class="text-sm text-gray-300">Comfortable weather</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-cyan-400 mb-2">65%</div>
+                        <p class="font-semibold">Humidity</p>
+                        <p class="text-sm text-gray-300">Moderate humidity</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-purple-400 mb-2">Active</div>
+                        <p class="font-semibold">System Status</p>
+                        <p class="text-sm text-gray-300">Monitoring live</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function showFeatures() {
+            document.getElementById('features').classList.remove('hidden');
+            document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
